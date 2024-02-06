@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.drive.sos;
+package org.firstinspires.ftc.teamcode.drive.sos.Auto;
 
 
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
