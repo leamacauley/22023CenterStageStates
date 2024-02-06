@@ -32,7 +32,7 @@ public class Red_Auto extends LinearOpMode {
 
         drive.setPoseEstimate(startPose);
         Trajectory first = drive.trajectoryBuilder(startPose)
-                .lineTo(new Vector2d(-2, 2))
+                .lineTo(new Vector2d(-3, 4))
                 .build();
         Trajectory second = drive.trajectoryBuilder(first.end())
                 .lineToSplineHeading((new Pose2d(-1, 5, Math.toRadians(90))))
@@ -44,21 +44,12 @@ public class Red_Auto extends LinearOpMode {
 
         if(isStopRequested()) return;
 
-        //drive.followTrajectory(first);
+        drive.followTrajectory(first);
         //drive.followTrajectory(second);
 
         runtime.reset();
 
 
-
-
-        // Make Decision - Run Functions
-
-        int location = 1;
-        telemetry.update();
-
-        telemetry.addData("Location", location);
-        telemetry.update();
     }
 
 
