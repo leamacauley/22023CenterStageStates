@@ -17,7 +17,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @Autonomous
 @Config
 
-public class Red_Auto extends LinearOpMode {
+public class Red_Spike_Auto extends LinearOpMode {
     public void runOpMode() {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
@@ -28,26 +28,17 @@ public class Red_Auto extends LinearOpMode {
 
         //0.5 (open), 0.85 (close)
 
-        Pose2d startPose = new Pose2d(7, 65, Math.toRadians(180));
+        Pose2d startPose = new Pose2d(0, 0, Math.toRadians(0));
 
         drive.setPoseEstimate(startPose);
         // to spike tape, position three
-        Trajectory thirdTape = drive.trajectoryBuilder(startPose)
-                .lineToSplineHeading(new Pose2d(14.11, -31.50, Math.toRadians(0.00)))
+        Trajectory firstTape = drive.trajectoryBuilder(startPose)
+                .lineToSplineHeading(new Pose2d(0, -20, Math.toRadians(0)))
+                .build();
+        Trajectory twoTape = drive.trajectoryBuilder(startPose)
+                .lineToSplineHeading(new Pose2d(0, -21, Math.toRadians(90)))
                 .build();
 
-        // GLOBAL!!!!
-        Trajectory third = drive.trajectoryBuilder(thirdTape.end())
-                .lineToSplineHeading(new Pose2d(10.02, -58.30, Math.toRadians(0.00)))
-                .build();
-        // to board
-        Trajectory fourth = drive.trajectoryBuilder(third.end())
-                .splineTo(new Vector2d(51.52, -36.71), Math.toRadians(0.00))
-                .build();
-        // park in middle terminal
-        Trajectory fifth = drive.trajectoryBuilder(fourth.end())
-                .lineToSplineHeading(new Pose2d(47.86, -9.33, Math.toRadians(0.00)))
-                .build();
 
 
 
@@ -59,8 +50,8 @@ public class Red_Auto extends LinearOpMode {
         if(isStopRequested()) return;
 
         //drive.followTrajectory(first);
-        drive.followTrajectory(thirdTape);
-
+        drive.followTrajectory(firstTape);
+        drive.followTrajectory(twoTape);
         runtime.reset();
 
 
