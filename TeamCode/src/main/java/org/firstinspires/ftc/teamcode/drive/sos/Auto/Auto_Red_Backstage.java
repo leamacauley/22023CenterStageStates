@@ -1,26 +1,5 @@
 package org.firstinspires.ftc.teamcode.drive.sos.Auto;
 
-
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
-
-import org.firstinspires.ftc.teamcode.drive.sos.MaristBaseRobot2022_Quad;
-
-import android.sax.StartElementListener;
-
-import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
-import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
-import com.acmerobotics.roadrunner.util.NanoClock;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-
-import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
-import com.qualcomm.robotcore.util.ElapsedTime;
-
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -29,21 +8,28 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.BuiltinCameraDirection;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
-import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
+import org.firstinspires.ftc.teamcode.drive.sos.MaristBaseRobot2022_Quad;
 import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.tfod.TfodProcessor;
 
 import java.util.List;
 
-@Autonomous
-@Config
+/*
+ * This OpMode illustrates the basics of TensorFlow Object Detection,
+ * including Java Builder structures for specifying Vision parameters.
+ *
+ * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
+ * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list.
+ */
+
+@Autonomous(name="Auto_Red_Backstage", group="Auto")
 
 public class Auto_Red_Backstage extends LinearOpMode {
-    SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-    // Initialize the Arms and Servo System
-    MaristBaseRobot2022_Quad robot = new MaristBaseRobot2022_Quad();
+    /* Declare OpMode members. */
+    MaristBaseRobot2022_Quad robot   = new MaristBaseRobot2022_Quad();
     private ElapsedTime runtime = new ElapsedTime();
+
     private int zone = 1; // Default if Team Prop not found
 
     private int watchTime = 5; // Watch for 5 seconds
@@ -73,9 +59,9 @@ public class Auto_Red_Backstage extends LinearOpMode {
      * The variable to store our instance of the vision portal.
      */
     private VisionPortal visionPortal;
-    public void runOpMode() {
 
-        //0.5 (open), 0.85 (close)
+    @Override
+    public void runOpMode() {
 
         /*
          * Initialize the drive system variables.
@@ -136,15 +122,9 @@ public class Auto_Red_Backstage extends LinearOpMode {
         telemetry.update();
 
 
+    }   // end runOpMode()
 
-        waitForStart();
-
-        if(isStopRequested()) return;
-
-        runtime.reset();
-
-
-    }
+    // Sample Delay Code
     public void delay(double t) { // Imitates the Arduino delay function
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < t)) {
@@ -152,6 +132,124 @@ public class Auto_Red_Backstage extends LinearOpMode {
             //telemetry.update();
         }
     }
+
+    // CENTERSTAGE Methods for Zone Operations (placing Pixels on Spike Marks or Backdrop)
+    public void zoneOne() {
+        // Code for zoneOne Here
+        robot.closeClaw();
+        delay(0.5);
+        robot.moveDistance(1, 0.5);
+        robot.strafeInches(-19, 0.5);
+        delay(0.5);
+        robot.turnAngle(150, 0.7);
+        delay(0.5);
+        robot.moveDistance(3, 0.5);
+        delay(1);
+        robot.rightOpen();
+        delay(0.5);
+        robot.moveDistance(-2, 0.8);
+        delay(0.5);
+        robot.turnAngle(380, 0.5);
+        delay(0.5);
+        robot.moveDistance(6, 0.5);
+        delay(0.5);
+        robot.strafeInches(17.5,0.8);
+        delay(0.5);
+        robot.armRunTo(580,0.9);
+        delay(0.8);
+        robot.moveDistance(6,0.3);
+        delay(0.5);
+        robot.leftOpen();
+        delay(0.2);
+        robot.moveDistance(-2,0.8);
+        delay(0.4);
+        robot.armRunTo(0,0.9);
+        delay(0.8);
+        robot.strafeInches(-33,0.8);
+        delay(0.2);
+        robot.moveDistance(8,0.8);
+
+    }
+
+    public void zoneTwo() {
+        // Code for zoneTwo Here
+        robot.closeClaw();
+        delay(0.5);
+        robot.strafeInches(-4, 0.5);
+        robot.turnAngle(255, 0.7);
+        delay(0.5);
+        robot.moveDistance(8.5, 0.5);
+        delay(1);
+        robot.rightOpen();
+        delay(0.5);
+        robot.moveDistance(-2, 0.8);
+        delay(0.5);
+
+        robot.turnAngle(260, 0.5);
+        delay(0.5);
+        robot.moveDistance(6, 0.5);
+        delay(0.5);
+        robot.strafeInches(8.5,0.8);
+        delay(0.5);
+        robot.armRunTo(560,0.9);
+        delay(0.8);
+        robot.moveDistance(6,0.3);
+        delay(0.5);
+        robot.leftOpen();
+        delay(0.2);
+        robot.moveDistance(-2,0.8);
+        delay(0.4);
+        robot.armRunTo(0,0.9);
+        robot.leftClose();
+        delay(0.8);
+        robot.strafeInches(-27,0.8);
+        delay(0.2);
+        robot.moveDistance(8,0.8);
+
+    }
+
+    public void zoneThree() {
+        // Code for zoneThree Here
+        robot.closeClaw();
+        delay(0.5);
+        robot.strafeInches(-28, 0.5);
+        delay(0.5);
+        robot.turnAngle(470, 0.7);
+        delay(0.5);
+        robot.rightOpen();
+        delay(0.5);
+        robot.moveDistance(-1, 0.8);
+        delay(0.5);
+        robot.strafeInches(-15, 0.5);
+        delay(0.5);
+
+
+        robot.turnAngle(50, 0.5);
+        delay(0.5);
+        robot.moveDistance(5, 0.5);
+        delay(0.5);
+        robot.strafeInches(14.5,0.8);
+        delay(0.5);
+        robot.armRunTo(580,0.9);
+        delay(0.8);
+        robot.moveDistance(6,0.3);
+        delay(0.5);
+        robot.leftOpen();
+        delay(0.2);
+        robot.moveDistance(-2,0.8);
+        delay(0.4);
+        robot.armRunTo(0,0.9);
+        delay(0.8);
+        robot.strafeInches(-24,0.8);
+        delay(0.2);
+        robot.moveDistance(8,0.8);
+
+    }
+
+
+    /**
+     * Initialize the TensorFlow Object Detection processor.
+     */
     private void initTfod() {
 
         // Create the TensorFlow processor by using a builder.
@@ -226,11 +324,11 @@ public class Auto_Red_Backstage extends LinearOpMode {
             double x = (recognition.getLeft() + recognition.getRight()) / 2 ;
             double y = (recognition.getTop()  + recognition.getBottom()) / 2 ;
 
-            if (x < 200) {
-                zone = 2;
+            if (x > 200) {
+                zone = 3;
             }
             else if (x > 0) {
-                zone = 3;
+                zone = 2;
             }
             else {
                 zone = 1;
@@ -243,103 +341,5 @@ public class Auto_Red_Backstage extends LinearOpMode {
         }   // end for() loop
 
     }   // end method telemetryTfod()
-    private void zoneThree() {
-        Pose2d startPose = new Pose2d(12, -61, Math.toRadians(0));
 
-        drive.setPoseEstimate(startPose);
-
-        TrajectorySequence toSpikeTape = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(14.20, -30.42), Math.toRadians(0.00))
-                .build();
-
-        TrajectorySequence toBoard = drive.trajectorySequenceBuilder(toSpikeTape.end())
-                .lineTo(new Vector2d(12.17, -59.02))
-                .splineTo(new Vector2d(50.91, -43.00), Math.toRadians(2.86))
-                .build();
-
-        TrajectorySequence park = drive.trajectorySequenceBuilder(toBoard.end())
-                .lineTo(new Vector2d(50.91, -59.83))
-                .build();
-
-        drive.followTrajectorySequence(toSpikeTape);
-        delay(1000);
-        robot.leftOpen();
-        delay(1000);
-        robot.armRunTo(1600,0.8);
-        delay(1000);
-        drive.followTrajectorySequence(toBoard);
-        delay(1000);
-        robot.rightOpen();
-        drive.followTrajectorySequence(park);
-        robot.armRunTo(0,0.8);
-
-    }
-    public void zoneTwo() {
-        Pose2d startPose = new Pose2d(10.84, -61.16, Math.toRadians(0));
-
-        drive.setPoseEstimate(startPose);
-        TrajectorySequence toSpikeTape = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(11.65, -33.99), Math.toRadians(270.00))
-                .build();
-
-        TrajectorySequence toBoard = drive.trajectorySequenceBuilder(toSpikeTape.end())
-                .splineTo(new Vector2d(10.43, -52.98), Math.toRadians(90))
-                .splineTo(new Vector2d(51.14, -35.80), Math.toRadians(0.00))
-                .build();
-
-        TrajectorySequence park = drive.trajectorySequenceBuilder(toBoard.end())
-                .lineTo(new Vector2d(50.30, -59.83))
-                .build();
-
-        //  following
-        drive.followTrajectorySequence(toSpikeTape);
-        delay(1000);
-        robot.leftOpen();
-        delay(1000);
-        robot.armRunTo(1600,0.8);
-        delay(1000);
-        drive.followTrajectorySequence(toBoard);
-        delay(1000);
-        robot.rightOpen();
-        drive.followTrajectorySequence(park);
-        robot.armRunTo(0,0.8);
-
-    }
-
-    public void zoneOne() {
-        Pose2d startPose = new Pose2d(10.84, -61.16, Math.toRadians(0));
-
-        drive.setPoseEstimate(startPose);
-
-        TrajectorySequence toSpikeTape = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(14.40, -30.02), Math.toRadians(0.00))
-                .build();
-
-        TrajectorySequence toBoard = drive.trajectorySequenceBuilder(toSpikeTape.end())
-                .lineTo(new Vector2d(11.15, -52.33))
-                .splineTo(new Vector2d(50.70, -30.22), Math.toRadians(109.65))
-                .build();
-
-        TrajectorySequence park = drive.trajectorySequenceBuilder(toBoard.end())
-                .lineTo(new Vector2d(47.86, -60.03))
-                .splineTo(new Vector2d(61.66, -59.83), Math.toRadians(0.00))
-                .build();
-
-        //  following
-        drive.followTrajectorySequence(toSpikeTape);
-        delay(1000);
-        robot.leftOpen();
-        delay(1000);
-        robot.armRunTo(1600,0.8);
-        delay(1000);
-        drive.followTrajectorySequence(toBoard);
-        delay(1000);
-        robot.rightOpen();
-        drive.followTrajectorySequence(park);
-        robot.armRunTo(0,0.8);
-
-    }
-
-
-
-}
+}   // end class

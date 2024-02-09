@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.drive.sos.MaristBaseRobot2022_Quad;
 
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous
+@Autonomous(name="RoadRunner Red Spike Auto", group="Auto")
 @Config
 
 public class Red_Spike_Auto extends LinearOpMode {

@@ -22,9 +22,9 @@ import java.util.List;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list.
  */
 
-@Autonomous(name="Auto_Blue_Backstage", group="Auto")
+@Autonomous(name="Auto_Red_Basic", group="Auto")
 
-public class Auto_Blue_Backstage extends LinearOpMode {
+public class Auto_Red_Basic extends LinearOpMode {
 
     /* Declare OpMode members. */
     MaristBaseRobot2022_Quad robot   = new MaristBaseRobot2022_Quad();
@@ -105,14 +105,14 @@ public class Auto_Blue_Backstage extends LinearOpMode {
         telemetry.update();
 
         // Run Autonomous Based on Team Prop Position
-        if (zone == 1) {
-            zoneOne();
+        if (zone == 3) {
+            zoneThree();
         }
         else if (zone == 2) {
             zoneTwo();
         }
         else {
-            zoneThree();
+            zoneOne();
         }
         delay(10); // Optional to hold OpMode open to display Zone Selection.
 
@@ -138,41 +138,15 @@ public class Auto_Blue_Backstage extends LinearOpMode {
         // Code for zoneOne Here
         robot.closeClaw();
         delay(0.5);
-        robot.strafeInches(-26, 0.5);
+        robot.strafeInches(-19, 0.5);
         delay(0.5);
         robot.turnAngle(150, 0.7);
         delay(0.5);
-        robot.moveDistance(1, 0.7);
+        robot.moveDistance(1.5, 0.5);
+        delay(1);
+        robot.openClaw();
         delay(0.5);
-        robot.rightOpen();
-        delay(0.5);
-        robot.moveDistance(-2.25, 0.8);
-        delay(0.5);
-
-        robot.turnAngle(-140, 0.5);
-        delay(0.5);
-        robot.moveDistance(6, 0.5);
-        delay(0.5);
-        robot.strafeInches(7,0.8);
-        delay(0.5);
-        robot.armRunTo(560,0.9);
-        delay(0.8);
-        robot.moveDistance(5,0.3);
-        delay(0.5);
-        robot.strafeInches(-3.5, 0.8);
-        delay(0.5);
-        robot.moveDistance(1.5,0.3);
-        delay(0.5);
-        robot.leftOpen();
-        delay(0.2);
-        robot.moveDistance(-2,0.8);
-        delay(0.4);
-        robot.armRunTo(0,0.9);
-        robot.leftClose();
-        delay(0.8);
-        robot.strafeInches(12,0.8);
-        delay(0.2);
-        robot.moveDistance(7,0.8);
+        robot.moveDistance(-1, 0.8);
 
     }
 
@@ -180,36 +154,15 @@ public class Auto_Blue_Backstage extends LinearOpMode {
         // Code for zoneTwo Here
         robot.closeClaw();
         delay(0.5);
+        robot.moveDistance(1,0.7);
         robot.strafeInches(-4, 0.5);
         robot.turnAngle(255, 0.7);
         delay(0.5);
-        robot.moveDistance(9, 0.4);
+        robot.moveDistance(8.5, 0.5);
         delay(1);
-        robot.rightOpen();
+        robot.openClaw();
         delay(0.5);
-        robot.moveDistance(-3, 0.5);
-
-        delay(0.5);
-        robot.turnAngle(-260, 0.5);
-        delay(0.5);
-        robot.moveDistance(6, 0.5);
-        delay(0.5);
-        robot.strafeInches(-8.5,0.5);
-        delay(0.5);
-        robot.armRunTo(550,0.9);
-        delay(0.8);
-        robot.moveDistance(5.75,0.3);
-        delay(0.6);
-        robot.leftOpen();
-        delay(0.6);
-        robot.moveDistance(-2,0.8);
-        delay(0.4);
-        robot.armRunTo(0,0.9);
-        robot.leftClose();
-        delay(0.8);
-        robot.strafeInches(26,0.8);
-        delay(0.2);
-        robot.moveDistance(6,0.8);
+        robot.moveDistance(-2, 0.8);
 
     }
 
@@ -217,37 +170,15 @@ public class Auto_Blue_Backstage extends LinearOpMode {
         // Code for zoneThree Here
         robot.closeClaw();
         delay(0.5);
-        robot.strafeInches(-25, 0.5);
+        robot.strafeInches(-28, 0.5);
         delay(0.5);
         robot.turnAngle(470, 0.7);
         delay(0.5);
         robot.moveDistance(1.5, 0.5);
         delay(1);
-        robot.rightOpen();
+        robot.openClaw();
         delay(0.5);
         robot.moveDistance(-2, 0.8);
-        delay(0.5);
-
-        robot.turnAngle(-480, 0.5);
-        delay(0.5);
-        robot.moveDistance(8, 0.5);
-        delay(0.5);
-        robot.strafeInches(-9,0.8);
-        delay(0.5);
-        robot.armRunTo(580,0.9);
-        delay(0.8);
-        robot.moveDistance(5,0.3);
-        delay(0.8);
-        robot.leftOpen();
-        delay(0.5);
-        robot.moveDistance(-2,0.8);
-        delay(0.4);
-        robot.armRunTo(0,0.9);
-        robot.leftClose();
-        delay(0.8);
-        robot.strafeInches(27,0.8);
-        delay(0.2);
-        robot.moveDistance(8,0.8);
 
     }
 
@@ -329,7 +260,7 @@ public class Auto_Blue_Backstage extends LinearOpMode {
             double x = (recognition.getLeft() + recognition.getRight()) / 2 ;
             double y = (recognition.getTop()  + recognition.getBottom()) / 2 ;
 
-            if (x > 400) {
+            if (x > 450) {
                 zone = 3;
             }
             else if (x > 0) {
