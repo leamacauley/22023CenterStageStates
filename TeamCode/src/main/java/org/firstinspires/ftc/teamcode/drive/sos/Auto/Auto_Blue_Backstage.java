@@ -232,7 +232,7 @@ public class Auto_Blue_Backstage extends LinearOpMode {
         delay(0.5);
         robot.moveDistance(8, 0.5);
         delay(0.5);
-        robot.strafeInches(-9,0.8);
+        robot.strafeInches(-11,0.8);
         delay(0.5);
         robot.armRunTo(580,0.9);
         delay(0.8);

@@ -142,7 +142,7 @@ public class Auto_Blue_Basic extends LinearOpMode {
         delay(0.5);
         robot.turnAngle(150, 0.7);
         delay(0.5);
-        robot.moveDistance(3, 0.5);
+        robot.moveDistance(4, 0.5);
         delay(1);
         robot.openClaw();
         delay(0.5);

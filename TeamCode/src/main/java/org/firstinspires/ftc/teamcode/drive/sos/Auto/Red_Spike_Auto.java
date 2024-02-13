@@ -41,12 +41,6 @@ public class Red_Spike_Auto extends LinearOpMode {
                 .lineToSplineHeading(new Pose2d(0, -21, Math.toRadians(90)))
                 .build();
 
-
-
-
-
-
-
         waitForStart();
 
         if(isStopRequested()) return;

@@ -51,11 +51,6 @@ public class Red_Auto extends LinearOpMode {
                 .lineToSplineHeading(new Pose2d(47.86, -9.33, Math.toRadians(0.00)))
                 .build();
 
-
-
-
-
-
         waitForStart();
 
         if(isStopRequested()) return;
