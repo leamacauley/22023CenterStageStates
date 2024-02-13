@@ -154,7 +154,7 @@ public class Auto_Red_Basic extends LinearOpMode {
         // Code for zoneTwo Here
         robot.closeClaw();
         delay(0.5);
-        robot.moveDistance(1,0.7);
+        //robot.moveDistance(1,0.7);
         robot.strafeInches(-4, 0.5);
         robot.turnAngle(255, 0.7);
         delay(0.5);

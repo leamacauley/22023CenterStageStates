@@ -149,11 +149,12 @@ public class Auto_Red_Backstage extends LinearOpMode {
         delay(0.5);
         robot.moveDistance(-2, 0.8);
         delay(0.5);
+
         robot.turnAngle(380, 0.5);
         delay(0.5);
         robot.moveDistance(6, 0.5);
         delay(0.5);
-        robot.strafeInches(17.5,0.8);
+        robot.strafeInches(17,0.8);
         delay(0.5);
         robot.armRunTo(580,0.9);
         delay(0.8);
@@ -185,7 +186,7 @@ public class Auto_Red_Backstage extends LinearOpMode {
         robot.moveDistance(-2, 0.8);
         delay(0.5);
 
-        robot.turnAngle(260, 0.5);
+        robot.turnAngle(265, 0.5);
         delay(0.5);
         robot.moveDistance(6, 0.5);
         delay(0.5);
@@ -204,7 +205,7 @@ public class Auto_Red_Backstage extends LinearOpMode {
         delay(0.8);
         robot.strafeInches(-27,0.8);
         delay(0.2);
-        robot.moveDistance(8,0.8);
+        robot.moveDistance(4,0.8);
 
     }
 
@@ -228,7 +229,7 @@ public class Auto_Red_Backstage extends LinearOpMode {
         delay(0.5);
         robot.moveDistance(5, 0.5);
         delay(0.5);
-        robot.strafeInches(14.5,0.8);
+        robot.strafeInches(13,0.8);
         delay(0.5);
         robot.armRunTo(580,0.9);
         delay(0.8);
@@ -242,7 +243,7 @@ public class Auto_Red_Backstage extends LinearOpMode {
         delay(0.8);
         robot.strafeInches(-24,0.8);
         delay(0.2);
-        robot.moveDistance(8,0.8);
+        robot.moveDistance(4,0.8);
 
     }
 

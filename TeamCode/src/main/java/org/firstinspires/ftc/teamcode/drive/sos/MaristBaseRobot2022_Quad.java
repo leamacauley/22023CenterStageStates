@@ -513,8 +513,8 @@ public class MaristBaseRobot2022_Quad {
     }
 
     public void openClaw() {    // right
-        leftHand.setPosition(0.625);
-        rightHand.setPosition(0.90);    //95
+        leftHand.setPosition(0.625);    // 0.625
+        rightHand.setPosition(0.90);    // 90
     }
     public void closeClaw() {   // left
         leftHand.setPosition(0.75);
