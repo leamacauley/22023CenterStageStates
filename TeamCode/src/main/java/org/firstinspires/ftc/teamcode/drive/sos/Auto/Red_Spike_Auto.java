@@ -37,6 +37,13 @@ public class Red_Spike_Auto extends LinearOpMode {
         Trajectory firstTape = drive.trajectoryBuilder(startPose)
                 .lineToSplineHeading(new Pose2d(0, -20, Math.toRadians(0)))
                 .build();
+
+
+        Trajectory test = drive.trajectoryBuilder(firstTape.end())
+                .lineTo(new Vector2d(30,20))
+                .build();
+
+
         Trajectory twoTape = drive.trajectoryBuilder(startPose)
                 .lineToSplineHeading(new Pose2d(0, -21, Math.toRadians(90)))
                 .build();

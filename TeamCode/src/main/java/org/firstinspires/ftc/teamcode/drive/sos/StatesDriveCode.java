@@ -145,12 +145,12 @@ public class StatesDriveCode extends OpMode {
         // UP
         // limit arm power
         if (climbPower > 0.2) {
-            climbPos += climbPower* 50;  //8
+            climbPos += climbPower* 30;  //8
         }
 
         // DOWN
         if (climbPower < -0.2) {
-            climbPos += climbPower * 50;   //4
+            climbPos += climbPower * 30;   //4
         }
 
         /**
